@@ -41,7 +41,14 @@ def validate_document(document: Dict[str,Any]) -> bool:
 
     return document_state
 
-def is_web_online_count_correct(status_info :Dict[str,str], max_not_working_count) -> bool:
+def is_web_online_count_correct(status_info :Dict[str,str], max_not_working_count: int) -> bool:
+    not_working = 0
+    for status in status_info.keys():
+        if status_info[status] == "off":
+            not_working +=1
+    
+    return False if not_working >= 2 else True
+
 
 
 
