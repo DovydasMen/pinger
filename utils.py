@@ -41,6 +41,9 @@ def validate_document(document: Dict[str,Any]) -> bool:
 
     return document_state
 
+def is_web_online_count_correct(status_info :Dict[str,str], max_not_working_count) -> bool:
+
+
 
 
     

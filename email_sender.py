@@ -33,6 +33,7 @@ class EmailSender:
         except SMTPException:
             file_logger.exception("No suitable authentication method was" 
                                   "found.")
+            return False
 
     def send_message(self) -> bool:
         try:
