@@ -12,7 +12,12 @@ def validate_document(document: Dict[str,Any]) -> bool:
             continue
         else:
             document_state = False
-    
+
+    if email_pattern.match(document["error_to_addreses"]):
+        pass
+    else:
+        document_state = False
+
     if email_pattern.match(document["account_id"]):
         pass
     else:
@@ -29,6 +34,9 @@ def validate_document(document: Dict[str,Any]) -> bool:
             document_state = False
     
     if isinstance(document["next_check"],int) != True:
+        document_state = False
+    
+    if isinstance(document["work_time"],int) != True:
         document_state = False
 
     return document_state

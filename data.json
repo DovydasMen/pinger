@@ -1,7 +1,21 @@
-{"to_addreses":["d.menkevicius@gmail.com", "d.menkevicius@gmail.com"],
-"account_id":"jo@jo.lt",
-"account_psw": "kazkas",
-"max_not_working_pages":2,
-"test_targets":["http://10.162.222.151:4200", "prod.alm.gpdm.fresenius.com", "desw-lizenz.schweinfurt.germany.fresenius.de", "central.artifactory.alm.gpdm.fresenius.com","qdok.ads.fresenius.com"],
-"next_check": 1
+{
+    "to_addreses": [
+        "d.menkevicius@gmail.com",
+        "d.menkevicius@gmail.com"
+    ],
+    "error_to_addreses": [
+        "d.menkevicius@gmail.com"
+    ],
+    "account_id": "jo@jo.lt",
+    "account_psw": "kazkas",
+    "max_not_working_pages": 2,
+    "test_targets": [
+        "http://10.162.222.151:4200",
+        "prod.alm.gpdm.fresenius.com",
+        "desw-lizenz.schweinfurt.germany.fresenius.de",
+        "central.artifactory.alm.gpdm.fresenius.com",
+        "qdok.ads.fresenius.com"
+    ],
+    "next_check": 1,
+    "work_time": 18
 }
