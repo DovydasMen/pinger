@@ -1,6 +1,7 @@
-from typing import Dict,Any
 import re
+import tcppinglib
 
+from typing import Dict, Any, List
 
 
 def validate_document(document: Dict[str,Any]) -> bool:
@@ -48,6 +49,38 @@ def is_web_online_count_correct(status_info :Dict[str,str], max_not_working_coun
             not_working +=1
     
     return False if not_working >= 2 else True
+
+def get_ping_results(hosts: Dict[str,str]) -> Dict[str, str]:
+    host_status = {}
+    for key in hosts.keys:
+        if key.startswith(prefix="http://"):
+            splited_host = key.split(":")
+            port = splited_host[2]
+            host = key.replace(old=f":{port}", new="")
+            host_responce=tcppinglib.tcpping(address=host,
+                                              port=port)
+            if host_responce.is_alive:
+                host_status[key] = "on"
+            else:
+                host_status[key] = "off"
+        else:
+            host_responce = tcppinglib.tcpping(address=key)
+            if host_responce.is_alive:
+                host_status[key] = "on"
+            else:
+                host_status[key] = "off"
+            
+    return host_status
+
+def get_text_down_targets(ping_result: Dict[str,str], next_check: int) -> str:
+    web_offline = []
+    for key, value in ping_result.items:
+        if value == "off":
+            web_offline.append(key)
+    return f"Hello,\n connection to bellowpages/IP' are down:{"\n".join(str(web_offline))} Next check will be made in {str(next_check)} ammount of hour"
+
+
+
 
 
 
